@@ -12,7 +12,7 @@ import axios from 'axios'
 function App() {
 
   const [empData, setempData] = useState([])
-const[fdata , setfdata] = useState([])
+  const [fdata, setfdata] = useState([])
 
   const addEmp = (emp) => {
     axios.get('http://localhost:8000/emp')
@@ -23,31 +23,31 @@ const[fdata , setfdata] = useState([])
   const deleteEmp = async (id) => {
     // const resourceid = id ;
     alert(id)
-    await axios.delete('http://localhost:8000/emp/'+id)
-    .then( result => console.log(result))
-    .catch(err => console.log(err))
+    await axios.delete('http://localhost:8000/emp/' + id)
+      .then(result => console.log(result))
+      .catch(err => console.log(err))
     addEmp()
   }
 
   const updateEmp = () => {
-    
+
   }
- 
+
   // const updateEmp = (id, emp) => {
   //   setempData((prev) => prev.map((prevEmp) => (
   //     prevEmp.id === id ? emp : prevEmp
   //   )))
   //   console.log(emp)
   // }
-  
+
 
   useEffect(() => {
     axios.get('http://localhost:8000/emp')
       .then(res => setempData(res.data))
       .catch(err => console.log(err))
 
-      console.log(fdata)
-  },[])
+    console.log(fdata)
+  }, [])
 
 
   // useEffect(() => {
@@ -87,7 +87,7 @@ const[fdata , setfdata] = useState([])
 
   return (
 
-    <EmpProvider value={{ empData,addEmp, deleteEmp, updateEmp }} >
+    <EmpProvider value={{ empData, addEmp, deleteEmp, updateEmp }} >
       <RouterProvider router={navrouter} />
     </EmpProvider>
 
